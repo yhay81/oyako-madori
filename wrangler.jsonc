@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "oyako-madori",
+  "main": "src/worker.tsx",
+  "compatibility_date": "2026-07-29",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "oyako-madori.yhay81.com",
+      "custom_domain": true,
+    },
+  ],
+  "triggers": {
+    "crons": ["17 20 * * *"],
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "oyako-madori",
+      "database_id": "45c6bde5-d420-4e02-9b6d-02f52eb9fce1",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+  },
+}

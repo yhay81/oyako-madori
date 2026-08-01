@@ -1,0 +1,10 @@
+{
+  "name": "おやこ間取り",
+  "short_name": "おやこ間取り",
+  "description": "授乳室とおむつ交換スペースを設備と公式確認日から探す",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f1e6",
+  "theme_color": "#243b5a",
+  "icons": [{ "src": "/favicon.png", "sizes": "192x192", "type": "image/png" }]
+}
