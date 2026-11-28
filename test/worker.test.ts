@@ -30,9 +30,24 @@ const eventRequest = (
 
 beforeAll(async () => {
   miniflare = new Miniflare({
-    d1Databases: { DB: "oyako-madori-test" },
-    modules: true,
-    script: "export default { fetch() { return new Response('test') } }",
+    workers: [
+      {
+        config: {
+          name: "",
+          compatibilityDate: "2026-07-29",
+          env: { DB: { type: "d1", id: "oyako-madori-test" } },
+          manifest: {
+            mainModule: "index.mjs",
+            modules: {
+              "index.mjs": {
+                type: "esm",
+                contents: "export default { fetch() { return new Response('test') } }",
+              },
+            },
+          },
+        },
+      },
+    ],
   });
   const database = await miniflare.getD1Database("DB");
   const migration = await readFile(pathOf("../migrations/0001_product_events.sql"), "utf8");
